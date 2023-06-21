@@ -19,7 +19,7 @@ class IAlarmLevel
         std::mutex _activeMutex;
 
     public:
-        virtual void ring() = 0; 
+        virtual void ring()=0; 
 
         void start();
         void stop();
