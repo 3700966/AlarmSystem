@@ -1,0 +1,4 @@
+workspace.code-workspace
+*.o
+*.exe
+*.json
