@@ -3,7 +3,8 @@
 
 int main()
 {
-    
+    Alarm alarm;
+    alarm.start();
 
     return 0;
 }
