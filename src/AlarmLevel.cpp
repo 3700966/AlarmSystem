@@ -41,7 +41,7 @@ void AlarmLevel::ring()
                 {
                     previousTime = time;
 
-                    if(beepCount == 4)
+                    if(beepCount == 5 && _pauseTime > 0)
                     {
                         _state = E_STATE::PAUSE;
                         beepCount = 0;
@@ -55,8 +55,8 @@ void AlarmLevel::ring()
 
             else if(_state == E_STATE::WAIT) 
             {
-                std::cout << "wait";
-                if( deltaT > _waitTime )   
+                std::cout << "_";
+                if( deltaT > _waitTime - _beepTime )   
                 {
                     _state = E_STATE::BEEP;
                     previousTime = time;
@@ -65,7 +65,7 @@ void AlarmLevel::ring()
 
             else if(_state == E_STATE::PAUSE) 
             {
-                std::cout << "pause";
+                std::cout << "_";
                 if( deltaT > _pauseTime )   
                 {
                     _state = E_STATE::BEEP;
