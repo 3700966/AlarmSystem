@@ -1,5 +1,7 @@
 #pragma once
 #include "AlarmLevel.h"
+
+#include <conio.h>
 #include <map>
 #include <vector>
 

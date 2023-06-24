@@ -16,7 +16,6 @@ Alarm::Alarm()
           // We add a fictionnal lower level to display '_ _ _' when no alarm is active
     _alarmLevels.push_back(new AlarmLevel(0, 0, 0));     
     _alarmLevels[3]->setToNoAlarm();
-    // _alarmLevels[3]->activate();
     _activatedAlarms.push_back(true);
 
 
@@ -41,10 +40,12 @@ void Alarm::start()
 
         switch (key)
         {
-            case 'q':
+            case 'q' :
                 alarmOn = false;
                 break;
-            
+            case 3 :
+                alarmOn = false;
+                break;
             case 'l':
                 _activatedAlarms[2] = !_activatedAlarms[2];
                 break;
@@ -83,9 +84,12 @@ void Alarm::chooseAlarmToActivate()
 
 void Alarm::stop()
 {
+    int characterCount = 0;
     for(auto level : _alarmLevels)
     {
-        level->stop();
+        characterCount = characterCount + level->stop();
     }
+
+    std::cout << "\nElapsed time : " << characterCount * 250 << " ms ( " << characterCount << " characters printed" << std::endl;
     return;
 }

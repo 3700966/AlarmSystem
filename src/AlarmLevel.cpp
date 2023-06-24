@@ -36,7 +36,7 @@ void AlarmLevel::ring()
             {
                 beepCount++;
 
-                std::cout << "X";
+                printCharacter("X");
                 if( deltaT > _beepTime )   
                 {
                     previousTime = time;
@@ -55,7 +55,7 @@ void AlarmLevel::ring()
 
             else if(_state == E_STATE::WAIT) 
             {
-                std::cout << "_";
+                printCharacter("_");
                 if( deltaT > _waitTime - _beepTime )   
                 {
                     _state = E_STATE::BEEP;
@@ -65,7 +65,7 @@ void AlarmLevel::ring()
 
             else if(_state == E_STATE::PAUSE) 
             {
-                std::cout << "_";
+                printCharacter("_");
                 if( deltaT > _pauseTime )   
                 {
                     _state = E_STATE::BEEP;
@@ -74,7 +74,7 @@ void AlarmLevel::ring()
             }
             else if(_state == E_STATE::NO_ALARM) 
             {
-                std::cout << "_";
+                printCharacter("_");
             }
         }
 
@@ -85,19 +85,25 @@ void AlarmLevel::ring()
     
 }
 
+void AlarmLevel::printCharacter(std::string character)
+{
+    std::cout << character;
+    _characterCount++;
+}
 
 void AlarmLevel::start()
 {
     _ringingThread = std::make_unique<std::thread>(ring, this);
 }
 
-void AlarmLevel::stop()
+int AlarmLevel::stop()
 {
     _stopMutex.lock();
     _stopAlarm = true;
     _stopMutex.unlock();
 
     _ringingThread->join();
+    return _characterCount;
 }
 
 bool AlarmLevel::isStop()
