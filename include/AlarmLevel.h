@@ -32,6 +32,8 @@ class AlarmLevel
         double _waitTime;
         double _pauseTime;
 
+    protected:
+
         int _characterCount = 0;
 
     public:
@@ -39,7 +41,7 @@ class AlarmLevel
         AlarmLevel(double beepTime, double waitTime, double pauseTime): _beepTime(beepTime), _waitTime(waitTime), _pauseTime(pauseTime){};
 
         void ring(); 
-        void printCharacter(std::string character);
+        virtual void printCharacter(std::string character);
 
         void start();
         int stop();
