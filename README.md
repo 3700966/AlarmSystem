@@ -9,23 +9,28 @@ This code has been written for windows,
 the conio library will probably not be available on different OS, such as Linux ones.
 ------------------------------------
 
-How to build :
+
+//////////////
+- How to build :
 
 This project has been built on windows, using minGW.
 If minGW and make are installed, just run "make" at the root of this folder
 
-How to run :
+/////////////
+- How to run :
 
 Once built, the executable will be in the bin folder. Just run it from the root "./bin/alarmSystem.exe"
 
-How to use :
+//////////////
+- How to use :
 
 When running, the alarm will be continuously displaying "_" characters.
 Press the 'l', 'm' and 'h' keys to request the low, medium and high levels respectively, or 'unrequest' them if they were already requested.
 At all times, the alarm will ring to the highest requested level.
 Press 'q' or 'CTRL+C' to exit the program.
  
-How it works :
+///////////////
+- How it works :
 
 Most of the job is done by Alarm.cpp.
 It does 3 things :
