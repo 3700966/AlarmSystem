@@ -17,13 +17,13 @@ INC := -I $(INCLUDE_PATH)
 all : $(BIN_PATH)/alarmSystem $(BIN_PATH)/tests
 
 
-$(BIN_PATH)/alarmSystem: obj/Alarm.o obj/AlarmLevel.o obj/main.o 
+$(BIN_PATH)/alarmSystem: $(BUILD_PATH)/Alarm.o $(BUILD_PATH)/AlarmLevel.o $(BUILD_PATH)/main.o 
 	$(CXX) $(CXXFLAGS) $(INC) -o $@ $^
 
-$(BIN_PATH)/tests: obj/Alarm.o obj/AlarmLevelTest.o obj/AlarmLevel.o obj/tests.o 
+$(BIN_PATH)/tests: $(BUILD_PATH)/Alarm.o $(BUILD_PATH)/AlarmLevelTest.o $(BUILD_PATH)/AlarmLevel.o $(BUILD_PATH)/tests.o 
 	$(CXX) $(CXXFLAGS) $(INC) -o $@ $^
 	
-obj/%.o : src/%.cpp
+$(BUILD_PATH)/%.o : $(SRC_PATH)/%.cpp
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 

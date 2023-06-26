@@ -17,7 +17,7 @@ bool printLowAlarm()
     std::string printed = low.getPrinted();
 
     if(nbCharacters != EXECTIME / 250000) return false;
-    std::cout << "printed : " << printed << std::endl;
+    if(printed != "XXXX_________________________________") return false;
     return true;
 }
 
@@ -36,7 +36,7 @@ bool printMediumAlarm()
     std::string printed = medium.getPrinted();
 
     if(nbCharacters != EXECTIME / 250000) return false;
-    std::cout << "printed : " << printed << std::endl;
+    if(printed != "X___X___X___X___X___X___X___X___X___") return false;
     return true;
 }
 
@@ -53,8 +53,10 @@ bool printHighAlarm()
     high.deactivate();
     int nbCharacters = high.stop();
     std::string printed = high.getPrinted();
+    
 
     if(nbCharacters != EXECTIME / 250000) return false;
-    std::cout << "printed : " << printed << std::endl;
+    if(printed != "X_X_X_X________X_X_X_X_X________X_X_") return false;
+
     return true;
 }
