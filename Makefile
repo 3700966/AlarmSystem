@@ -8,8 +8,8 @@ BUILD_PATH = obj
 BIN_PATH = bin
 
 # sources #
-SRC := $(wildcard src/*.cpp)
-OBJ := $(subst src, obj, $(SRC:.cpp=.o))
+SRC := $(wildcard $(SRC_PATH)/*.cpp)
+OBJ := $(subst $(SRC_PATH), $(BUILD_PATH), $(SRC:.cpp=.o))
 INC := -I $(INCLUDE_PATH)
 
 

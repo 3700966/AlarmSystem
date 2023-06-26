@@ -5,6 +5,9 @@ int main()
 {
     bool ok = true;
 
+    std::cout << "\n --- TESTS : RINGING (30s) " << std::endl;
+
+
     if( printLowAlarm() )       
     {
         std::cout << "\nLOW ALARM OK " << std::endl;
